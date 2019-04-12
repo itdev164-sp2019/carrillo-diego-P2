@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       city: undefined,
       country: undefined,
+      icon: undefined,
       description: undefined,
       currentWeather: undefined,
       maxWeather: undefined,
@@ -60,6 +61,7 @@ class App extends Component {
       city={this.state.city}
       country={this.state.country}
       currentWeather={this.state.currentWeather}
+      icon={this.state.icon}
       description={this.state.description}
       maxWeather={this.state.maxWeather}
       minWeather={this.state.minWeather}

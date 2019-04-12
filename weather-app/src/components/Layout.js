@@ -30,9 +30,9 @@ const Image = styled.image`
 const Layout = props => (
         <Display>
             <H1>{props.title}</H1>
-            <Image />
+            <Image /> 
         </Display>     
 );
 
 export default Layout;
-  
+ 

@@ -8,20 +8,22 @@ const Container = styled(Box)`
     background: #34e89e;  
     background: -webkit-linear-gradient(to right, #0f3443, #34e89e);  
     background: linear-gradient(to right, #0f3443, #34e89e); 
-     display: block;
+    display: block;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 `;
 
 
 const WeatherForm = (props) => (
             <Container>
-                {props.city && props.country && <p>Location: {props.city}, {props.country}</p>}
-                {props.currentWeather && <p>Weather: {props.currentWeather}</p>}
-                {props.description && <p>Condition: {props.description}</p>}
-                {props.maxWeather && <p>High: {props.maxWeather}</p>}
-                {props.minWeather && <p>Low: {props.minWeather}</p>}
-                {props.humidity && <p>Humidity: {props.humidity}</p>}
+                {props.city && props.country && <h2>Location: {props.city}, {props.country}</h2>}
+                {props.currentWeather && <h2>Weather: {props.currentWeather}</h2>}
+                {props.icon} && <h2></h2>
+                {props.description && <h2>Condition: {props.description}</h2>}
+                {props.maxWeather && <h2>High: {props.maxWeather}</h2>}
+                {props.minWeather && <h2>Low: {props.minWeather}</h2>}
+                {props.humidity && <h2>Humidity: {props.humidity}</h2>}
             </Container>
 );
     
