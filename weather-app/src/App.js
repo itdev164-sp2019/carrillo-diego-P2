@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Layout from './components/Layout';
 import Form from './components/Form';
-import Weather from './components/Weather';
+import WeatherForm from './components/WeatherForm';
 import './App.css';
 
 const APIKey = "e06c60caa646bec9768fa32ed136c7b5"; 
@@ -12,16 +12,13 @@ class App extends Component {
     super(props);
 
     this.state = {
-      temperature: undefined,
       city: undefined,
       country: undefined,
       description: undefined,
-      icon: undefined,
-      date: undefined,
       currentWeather: undefined,
       maxWeather: undefined,
       minWeather: undefined,
-
+      humidity: undefined,
       title: "Weather Tracker",
     Ftitle: "DCarr-Media"
     };
@@ -34,21 +31,22 @@ class App extends Component {
 
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
-    const APIcall = await fetch(`http://api.openweathermap.org/data/2.5/forecast?q=${city},${country}&appid=${APIKey}`);
+    const APIcall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${APIKey}&units=imperial`);
     
     //modified API call by inserting city and country
     
     const data = await APIcall.json();
     this.setState({
-      city: data.city.name,
-      country: data.city.country,
-      description: data.list[0].weather.description,
-      icon: data.list[0].weather.icon,
-      date: data.list[0].dt_txt,
-      currentWeather: data.list[0].main.temp,
-      maxWeather: data.list[0].main.temp_max,
-      minWeather: data.list[0].main.temp_min
+      city: data.name,
+      country: data.sys.country,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+      currentWeather: data.main.temp,
+      maxWeather: data.main.temp_max,
+      minWeather: data.main.temp_min,
+      humidity: data.main.humidity
     })
+    
     console.log(data);
   }
  
@@ -57,9 +55,19 @@ class App extends Component {
       <div className="App">
      <Layout title={this.state.title} />
      <Form getForecast={this.getForecast} />
+     <WeatherForm
+    
+      city={this.state.city}
+      country={this.state.country}
+      currentWeather={this.state.currentWeather}
+      description={this.state.description}
+      maxWeather={this.state.maxWeather}
+      minWeather={this.state.minWeather}
+      humidity={this.state.humidity}
+     />
      </div>
     );
-  }//Form calls getWeather Function
+  }//Form calls getWeather Function and gets passed on to weatherForm
 }
 
 export default App;

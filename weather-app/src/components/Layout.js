@@ -6,7 +6,6 @@ const Display = styled(Flex)`
     background: #373B44; 
     background: -webkit-linear-gradient(to right, #4286f4, #373B44);  
     background: linear-gradient(to right, #4286f4, #373B44); 
-    height: 675px;
 `;
 
 
@@ -27,11 +26,13 @@ const Image = styled.image`
 `;
 
 
+
 const Layout = props => (
         <Display>
             <H1>{props.title}</H1>
-            <Image />  
+            <Image />
         </Display>     
 );
 
 export default Layout;
+  
