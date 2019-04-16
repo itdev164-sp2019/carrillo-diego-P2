@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
+import styled from 'styled-components'
 import Layout from './components/Layout';
 import Form from './components/Form';
 import WeatherForm from './components/WeatherForm';
+import { Box } from 'rebass'
 import './App.css';
 
 const APIKey = "e06c60caa646bec9768fa32ed136c7b5"; 
 //API key created for open weather 
+
+const Container = styled(Box)`
+    height: 30px;
+    width: 900px;
+    background: #34e89e;  
+    background: -webkit-linear-gradient(to right, #0f3443, #34e89e);  
+    background: linear-gradient(to right, #0f3443, #34e89e); 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+`;
 
 class App extends Component {
  constructor(props) {
@@ -54,6 +68,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+     <Container>
      <Layout title={this.state.title} />
      <Form getForecast={this.getForecast} />
      <WeatherForm
@@ -67,6 +82,7 @@ class App extends Component {
       minWeather={this.state.minWeather}
       humidity={this.state.humidity}
      />
+     </Container>
      </div>
     );
   }//Form calls getWeather Function and gets passed on to weatherForm
